@@ -1,4 +1,4 @@
-package com.core.mybestpalapi;
+package com.core.mybestpalapi.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
