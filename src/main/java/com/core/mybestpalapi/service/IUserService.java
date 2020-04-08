@@ -1,4 +1,7 @@
 package com.core.mybestpalapi.service;
 
-public interface IUserService {
+import com.core.mybestpalapi.common.service.IService;
+import com.core.mybestpalapi.persistence.model.User;
+
+public interface IUserService extends IService<User> {
 }

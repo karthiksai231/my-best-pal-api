@@ -4,30 +4,35 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-@Entity
+@Document(collation = "users")
 @Builder
 @Getter
 @Setter
-public class User {
+public class User implements Serializable {
     @Id
-    @Column(name = "User_ID")
+    @Field(name = "User_ID")
     public UUID id;
-    @Column(name = "First_Name")
+    @Field(name = "First_Name")
     public String firstName;
-    @Column(name = "Last_Name")
+    @Field(name = "Last_Name")
     public String lastName;
-    @Column(name = "User_Name")
+    @Field(name = "User_Name")
     public String userName;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @Column(name = "Created_Date")
+    @Field(name = "Created_Date")
     public Date created_Date;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @Column(name = "Updated_Date")
+    @Field(name = "Updated_Date")
     public Date updated_Date;
 
     @PrePersist

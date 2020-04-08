@@ -1,11 +1,11 @@
 package com.core.mybestpalapi.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
     private String firstName;
     private String lastName;
