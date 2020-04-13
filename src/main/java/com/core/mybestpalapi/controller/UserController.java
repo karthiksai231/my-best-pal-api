@@ -6,7 +6,16 @@ import com.core.mybestpalapi.persistence.model.User;
 import com.core.mybestpalapi.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("users")
@@ -17,8 +26,14 @@ public class UserController extends AbstractController<User> {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final UserDto userDto) {
+    public void create(@RequestBody @Valid final UserDto userDto) {
         createInternal(getUserToCreate(userDto));
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public User get(@PathVariable(name = "id") final String id) {
+        return getByIdInternal(id);
     }
 
     private User getUserToCreate(UserDto userDto) {

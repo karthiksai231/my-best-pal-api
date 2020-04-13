@@ -21,7 +21,7 @@ import java.util.UUID;
 public class User implements Serializable {
     @Id
     @Field(name = "User_ID")
-    public UUID id;
+    public String id;
     @Field(name = "First_Name")
     public String firstName;
     @Field(name = "Last_Name")

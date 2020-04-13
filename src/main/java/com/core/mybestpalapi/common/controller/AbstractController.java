@@ -3,6 +3,7 @@ package com.core.mybestpalapi.common.controller;
 import com.core.mybestpalapi.common.service.IService;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public abstract class AbstractController<T extends Serializable> {
 
@@ -10,6 +11,10 @@ public abstract class AbstractController<T extends Serializable> {
         // Pre-conditions
         //service call
         getService().create(resource);
+    }
+
+    protected final T getByIdInternal(final String id) {
+        return getService().getById(id);
     }
 
     protected abstract IService<T> getService();

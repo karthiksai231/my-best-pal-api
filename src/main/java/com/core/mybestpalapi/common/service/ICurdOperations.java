@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface ICurdOperations <T extends Serializable> {
-    T getById(final long id);
+    T getById(final String id);
 
     List<T> getAll();
 
