@@ -4,7 +4,7 @@ import com.core.mybestpalapi.common.controller.AbstractController;
 import com.core.mybestpalapi.dto.UserDto;
 import com.core.mybestpalapi.persistence.model.User;
 import com.core.mybestpalapi.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("users")
+@AllArgsConstructor
 public class UserController extends AbstractController<User> {
 
-    @Autowired
     private IUserService userService;
 
     @RequestMapping(method = RequestMethod.POST)

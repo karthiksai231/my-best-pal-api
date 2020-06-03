@@ -12,27 +12,26 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
-@Document(collation = "users")
+@Document(collection = "users")
 @Builder
 @Getter
 @Setter
 public class User implements Serializable {
     @Id
-    @Field(name = "User_ID")
+    @Field(name = "user_id")
     public String id;
-    @Field(name = "First_Name")
+    @Field(name = "first_name")
     public String firstName;
-    @Field(name = "Last_Name")
+    @Field(name = "last_name")
     public String lastName;
-    @Field(name = "User_Name")
+    @Field(name = "user_name")
     public String userName;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @Field(name = "Created_Date")
+    @Field(name = "created_date")
     public Date created_Date;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @Field(name = "Updated_Date")
+    @Field(name = "updated_date")
     public Date updated_Date;
 
     @PrePersist
