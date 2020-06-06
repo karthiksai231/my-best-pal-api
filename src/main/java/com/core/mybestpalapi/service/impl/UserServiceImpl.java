@@ -2,11 +2,11 @@ package com.core.mybestpalapi.service.impl;
 
 
 import com.core.mybestpalapi.common.service.AbstractService;
-import com.core.mybestpalapi.dto.Option;
 import com.core.mybestpalapi.persistence.IUserRepository;
 import com.core.mybestpalapi.persistence.model.User;
 import com.core.mybestpalapi.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,8 +17,9 @@ import java.util.UUID;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class UserServiceImpl extends AbstractService<User> implements IUserService {
-    @Autowired
+
     IUserRepository userRepository;
 
     @Override
@@ -36,8 +37,8 @@ public class UserServiceImpl extends AbstractService<User> implements IUserServi
     @Override
     public User create(User entity) {
         entity.setId(UUID.randomUUID().toString());
-        entity.setCreated_Date(new Date());
-        entity.setUpdated_Date(new Date());
+        entity.setCreatedDate(new Date());
+        entity.setUpdatedDate(new Date());
 
         return getRepoExecutor().save(entity);
     }

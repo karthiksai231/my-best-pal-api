@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public abstract class AbstractController<T extends Serializable> {
 
-    protected final void createInternal(final T resource) {
+    protected final T createInternal(final T resource) {
         // Pre-conditions
         //service call
-        getService().create(resource);
+        return getService().create(resource);
     }
 
     protected final T getByIdInternal(final String id) {

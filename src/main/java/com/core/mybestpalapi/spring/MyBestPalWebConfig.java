@@ -27,7 +27,7 @@ public class MyBestPalWebConfig implements WebMvcConfigurer {
         if(converter.isPresent()) {
             final AbstractJackson2HttpMessageConverter jsonConvertor = (AbstractJackson2HttpMessageConverter) converter.get();
             jsonConvertor.getObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-            jsonConvertor.getObjectMapper().enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+            //jsonConvertor.getObjectMapper().enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         }
     }
 }

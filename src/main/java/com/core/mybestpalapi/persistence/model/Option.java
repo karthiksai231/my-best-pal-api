@@ -13,18 +13,19 @@ import javax.persistence.PreUpdate;
 import java.io.Serializable;
 import java.util.Date;
 
-@Document(collection = "questions")
+@Document(collection = "answers")
 @Builder
 @Getter
 @Setter
-public class Question implements Serializable {
+public class Option implements Serializable {
   @Id
-  @Field(name = "question_id")
+  @Field(name = "option_id")
   public String id;
-  @Field(name = "question")
-  public String question;
-  @Field(name = "user_id")
-  public String userId;
+  public String answer;
+  @Field(name = "question_id")
+  public String questionId;
+  @Field(name = "is_answer")
+  public boolean isAnswer;
   @JsonFormat(pattern = "yyyy-mm-dd")
   @Field(name = "created_date")
   public Date createdDate;
@@ -42,5 +43,5 @@ public class Question implements Serializable {
     this.updatedDate = new Date();
   }
 
-  public static Question.QuestionBuilder builder() {return new Question.QuestionBuilder();}
+  public static Option.OptionBuilder builder() {return new Option.OptionBuilder();}
 }

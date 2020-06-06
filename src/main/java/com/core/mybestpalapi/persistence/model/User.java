@@ -29,19 +29,19 @@ public class User implements Serializable {
     public String userName;
     @JsonFormat(pattern = "yyyy-mm-dd")
     @Field(name = "created_date")
-    public Date created_Date;
+    public Date createdDate;
     @JsonFormat(pattern = "yyyy-mm-dd")
     @Field(name = "updated_date")
-    public Date updated_Date;
+    public Date updatedDate;
 
     @PrePersist
     protected void onCreate() {
-        this.created_Date = new Date();
+        this.createdDate = new Date();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updated_Date = new Date();
+        this.updatedDate = new Date();
     }
 
     public static UserBuilder builder() {return new UserBuilder();}
