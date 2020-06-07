@@ -2,6 +2,8 @@ package com.core.mybestpalapi.persistence;
 
 import com.core.mybestpalapi.persistence.model.Question;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IQuestionsRepository extends MongoRepository<Question, String> {
+@Repository
+public interface IQuestionRepository extends MongoRepository<Question, String> {
 }

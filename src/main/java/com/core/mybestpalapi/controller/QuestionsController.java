@@ -6,10 +6,11 @@ import com.core.mybestpalapi.dto.OptionDto;
 import com.core.mybestpalapi.dto.QuestionDto;
 import com.core.mybestpalapi.persistence.model.Option;
 import com.core.mybestpalapi.persistence.model.Question;
-import com.core.mybestpalapi.service.IOptionsService;
+import com.core.mybestpalapi.service.IOptionService;
 import com.core.mybestpalapi.service.IQuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,21 +24,15 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class QuestionsController extends AbstractController<Question> {
   IQuestionService questionService;
-  IOptionsService optionsService;
+  IOptionService optionsService;
 
   @RequestMapping(method = RequestMethod.POST)
   @ResponseStatus(HttpStatus.CREATED)
-  public void create(@RequestBody @Valid final QuestionDto questionDto) {
-    Question createdQuestion = createInternal(getQuestionToCreate(questionDto));
+  public ResponseEntity create(@RequestBody @Valid final QuestionDto questionDto) {
+    String createdId = questionService.createQuestionWithOptions(getQuestionToCreate(questionDto),
+        questionDto.getOptionDtos());
 
-    for (OptionDto op:
-         questionDto.getOptionDtos()) {
-      optionsService.create(Option.builder()
-          .questionId(createdQuestion.getId())
-          .isAnswer(op.getIsAnswer())
-          .answer(op.getOption())
-          .build());
-    }
+    return ResponseEntity.ok(createdId);
   }
 
   private Question getQuestionToCreate(QuestionDto questionDto) {
