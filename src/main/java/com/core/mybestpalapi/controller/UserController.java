@@ -4,6 +4,7 @@ import com.core.mybestpalapi.common.controller.AbstractController;
 import com.core.mybestpalapi.dto.UserDto;
 import com.core.mybestpalapi.persistence.model.User;
 import com.core.mybestpalapi.service.IUserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("users")
 @AllArgsConstructor
+@Tag(name = "user", description = "the User API")
 public class UserController extends AbstractController<User> {
 
     private IUserService userService;

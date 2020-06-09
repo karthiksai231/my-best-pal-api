@@ -1,12 +1,13 @@
 package com.core.mybestpalapi.spring;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,5 +30,10 @@ public class MyBestPalWebConfig implements WebMvcConfigurer {
             jsonConvertor.getObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
             //jsonConvertor.getObjectMapper().enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         }
+    }
+
+    @Bean
+    public InternalResourceViewResolver defaultViewResolver() {
+        return new InternalResourceViewResolver();
     }
 }
